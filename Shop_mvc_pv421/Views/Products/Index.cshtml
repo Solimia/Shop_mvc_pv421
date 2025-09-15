@@ -7,9 +7,12 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col">Title</th>
             <th scope="col">Price</th>
             <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Status</th>
         </tr>
     </thead>
     <tbody>
@@ -17,9 +20,35 @@
         {
             <tr>
                 <th scope="row">@i.Id</th>
+                <td>
+                    <img src="@(i.ImageUrl ?? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930")" alt="@i.Title" height="40" />
+                </td>
                 <td>@i.Title</td>
-                <td>@i.Price</td>
+                <td>
+                    @if(i.Discount > 0)
+                    {
+                        <span class="text-decoration-line-through">@i.Price$</span>
+                        <span class="ms-2">@((i.Price * (100 - i.Discount)) / 100)$</span>
+                    }
+                    else
+                    {
+                        <span>@i.Price$</span>
+                    }
+                </td>
                 <td>@i.Category</td>
+                <td>@i.Quantity</td>
+                <td>
+                    @if(i.Quantity > 0)
+                    {
+                        <span class="badge text-bg-success">In Stock</span>
+                    }
+                    else
+                    {
+                        <span class="badge text-bg-secondary">Out of Stock</span>
+                    }
+
+                </td>
+
             </tr>
 		}
     </tbody>
