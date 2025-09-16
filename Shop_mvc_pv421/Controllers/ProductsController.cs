@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Shop_mvc_pv421.Data;
 
 namespace Shop_mvc_pv421.Controllers
@@ -15,7 +16,7 @@ namespace Shop_mvc_pv421.Controllers
         public IActionResult Index()
         {
 
-            var model = ctx.Products.ToList();
+            var model = ctx.Products.Include(x => x.Category).ToList();
 
             return View(model);
         }

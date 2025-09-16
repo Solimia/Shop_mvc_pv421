@@ -24,7 +24,10 @@
                 <td>
                     <img src="@(i.ImageUrl ?? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930")" alt="@i.Title" height="40" />
                 </td>
-                <td>@i.Title</td>
+                <td>
+                    <a href="a" @i.Title><span class="badge text-bg-primary">@i.Title</span></a>
+                    
+                </td>
                 <td>
                     @if(i.Discount > 0)
                     {
@@ -36,7 +39,7 @@
                         <span>@i.Price$</span>
                     }
                 </td>
-                <td>@i.Category</td>
+                <td>@i.Category?.Name</td>
                 <td>@i.Quantity</td>
                 <td>
                     @if(i.Quantity > 0)
