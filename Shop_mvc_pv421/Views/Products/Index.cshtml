@@ -49,8 +49,7 @@
                     }
                 <td>@i.Category</td>
                 <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
+                    <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger">Delete</a>
                 </td>
 
             </tr>

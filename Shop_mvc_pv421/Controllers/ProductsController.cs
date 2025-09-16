@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Mvc;
 using Shop_mvc_pv421.Data;
 
 namespace Shop_mvc_pv421.Controllers
@@ -17,6 +18,16 @@ namespace Shop_mvc_pv421.Controllers
             var model = ctx.Products.ToList();
 
             return View(model);
+        }
+        public IActionResult Delete(int id)
+        {
+            var product = ctx.Products.Find(id);
+            if(product == null) return NotFound();
+            
+            ctx.Products.Remove(product);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index") ;
         }
     }
 }
