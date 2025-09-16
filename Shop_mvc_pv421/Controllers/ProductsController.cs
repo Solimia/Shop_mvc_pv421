@@ -20,6 +20,10 @@ namespace Shop_mvc_pv421.Controllers
 
             return View(model);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
         public IActionResult Delete(int id)
         {
             var product = ctx.Products.Find(id);

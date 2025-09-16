@@ -1,0 +1,50 @@
+﻿namespace Shop_mvc_pv421.Views.Products
+
+@model Product
+
+<h1>Create new product</h1>
+
+<form class="row g-3">
+    <div class="col-md-12">
+        <label  class="form-label">Title</label>
+        <input type="text" class="form-control" >
+    </div>
+    <div class="col-md-6">
+        <label  class="form-label">Price</label>
+        <input type="number" class="form-control" >
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Discount</label>
+        <input type="number" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <label  class="form-label">Quantity</label>
+        <input type="number" class="form-control" >
+    </div>
+    <div class="col-md-8">
+        <label class="form-label">Category Id </label>
+        <input type="number" class="form-control"  >
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Image Url</label>
+        <input type="url" class="form-control">
+    </div>
+    <div class="col-12">
+        <label class="form-label">Description </label>
+        <input type="text" class="form-control">
+    </div>
+
+@*     <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+        </select>
+    </div> *@
+    <div class="col-6">
+        <button type="submit" class="btn btn-dark w-100">Back</button>
+    </div>
+    <div class="col-6">
+        <button type="submit" class="btn btn-success w-100">Create</button>
+    </div>
+</form>
