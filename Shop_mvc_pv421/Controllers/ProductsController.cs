@@ -40,6 +40,27 @@ namespace Shop_mvc_pv421.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var product = ctx.Products.Find(id);
+            if (product == null) return NotFound();
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            ctx.Products.Update(product);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
         public IActionResult Delete(int id)
         {
             var product = ctx.Products.Find(id);

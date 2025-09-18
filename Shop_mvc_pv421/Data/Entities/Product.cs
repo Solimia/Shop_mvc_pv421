@@ -1,23 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Shop_mvc_pv421.Data.Entities
+namespace Shop_mvc_pv421.Data.Entities;
+
+public class Product
 {
-    public class Product
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Title { get; set; }
-        public string? ImageUrl { get; set; }
+    [Required, MinLength(3, ErrorMessage ="Title must has least 3 charactes")]
+    [RegularExpression(@"^[A-Z].*", ErrorMessage = "Title must start with a capital letter")]
 
-        public decimal Price { get; set; }
+    public string Title { get; set; }
+    public string? ImageUrl { get; set; }
 
-        public int Discount { get; set; }
-        public int Quantity { get; set; }
+    public decimal Price { get; set; }
 
-        public string? Description { get; set; }
-        public int CategoryId { get; set; }
+    [Range(0, 100)]
 
-        // ----- navigation properties
-        public Category? Category { get; set; }
-    }
+    public int Discount { get; set; }
+    public int Quantity { get; set; }
+
+    [MinLength(10), MaxLength(5000)]
+
+    public string? Description { get; set; }
+    public int CategoryId { get; set; }
+
+    // ----- navigation properties
+    public Category? Category { get; set; }
 }

@@ -24,7 +24,7 @@
         {
             <tr>
                 <th scope="row">@i.Id</th>
-                <td>
+                <td class="grid-item-main-image">
                     <img src="@(i.ImageUrl ?? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930")" alt="@i.Title" height="40" />
                 </td>
                 <td>
@@ -55,6 +55,8 @@
                     }
                 <td>@i.Category</td>
                 <td>
+                    
+                    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@i.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger">Delete</a>
                 </td>
 
