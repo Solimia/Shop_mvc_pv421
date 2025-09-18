@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop_mvc_pv421.Data;
+using Shop_mvc_pv421.Data.Entities;
 
 namespace Shop_mvc_pv421.Controllers
 {
@@ -20,9 +21,24 @@ namespace Shop_mvc_pv421.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            ctx.Products.Add(product);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)
         {
