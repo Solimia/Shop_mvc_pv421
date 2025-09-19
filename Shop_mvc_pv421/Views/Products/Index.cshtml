@@ -53,12 +53,11 @@
                     {
                         <span class="badge text-bg-secondary">Out of Stock</span>
                     }
-                <td>@i.Category</td>
+                
                 <td>
                     
                     <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@i.Id">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-danger">Delete</a>
-                </td>
+                    <a  data-bs-id="@i.Id" data-bs-toggle="modal" data-bs-target="#deleteConfirmDialog" class="btn btn-outline-danger">Delete</a>
 
             </tr>
 		}
@@ -69,4 +68,40 @@
     <div class="tab-content">
         <img width="500" src="https://cdni.iconscout.com/illustration/premium/thumb/empty-state-concept-illustration-svg-download-png-2902554.png" alt="Alternate Text" />
     </div>
+}
+
+
+<div class="modal fade" id="deleteConfirmDialog" tabindex="-1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete ... product? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a id="deleteBtn"  class="btn btn-danger">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+        var modal = document.getElementById('deleteConfirmDialog')
+		var deleteBtn = document.getElementById('deleteBtn')
+
+        modal.addEventListener('show.bs.modal', function (event) {
+
+        var button = event.relatedTarget
+
+		var id = button.getAttribute('data-bs-id')
+        var deleteBtn = modal.querySelector('.modal #deleteBtn')
+		deleteBtn.setAttribute('href', '/products/delete/' + id)
+     })
+    </script>
 }

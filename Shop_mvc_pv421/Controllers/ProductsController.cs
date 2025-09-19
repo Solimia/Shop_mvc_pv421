@@ -46,6 +46,7 @@ namespace Shop_mvc_pv421.Controllers
         {
             var product = ctx.Products.Find(id);
             if (product == null) return NotFound();
+
             return View(product);
         }
 
