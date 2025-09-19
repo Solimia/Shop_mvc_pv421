@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Shop_mvc_pv421.Data;
 using Shop_mvc_pv421.Data.Entities;
 
+
 namespace Shop_mvc_pv421.Controllers
 {
     public class ProductsController : Controller
@@ -25,6 +26,7 @@ namespace Shop_mvc_pv421.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 

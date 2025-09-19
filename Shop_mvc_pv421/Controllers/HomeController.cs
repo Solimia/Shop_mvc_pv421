@@ -1,21 +1,26 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Shop_mvc_pv421.Data;
 using Shop_mvc_pv421.Models;
 
 namespace Shop_mvc_pv421.Controllers
 {
     public class HomeController : Controller
+
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ShopDbContext ctx;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ShopDbContext ctx)
         {
-            _logger = logger;
+            this.ctx = ctx;
         }
-
+  
         public IActionResult Index()
         {
-            return View();
+            var products = ctx.Products.Include(x => x.Category).ToList();
+
+            return View(products);
         }
 
         public IActionResult Privacy()
