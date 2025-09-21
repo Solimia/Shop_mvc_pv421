@@ -9,18 +9,13 @@
 
 
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-ld-4 g-4">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-ld-5 g-4">
     @foreach (var i in Model)
     {
          <div class="col">
-        <div class="card h-100">
-            <img src="@i.ImageUrl" class="card-img-top" alt="Product">
-            <div class="card-body">
-                <h5 class="card-title">@i.Title</h5>
-                <p class="card-text">@i.Price - @i.Category?.Name</p>
-            </div>
-        </div>
-    </div>
-    }
+			<partial name="_ProductCardPartial" model="@i"/>
+            @* @await Html.PartialAsync("_ProductCardPartial", @i) *@
+         </div>
+    };
 </div>
 

@@ -1,0 +1,13 @@
+﻿@model Product
+
+<div class="card h-100">
+    <img src="@Model.ImageUrl" class="card-img-top" alt="Product">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Price - @Model.Category?.Name</p>
+    </div>
+    <div class="card-footer">
+        <button type="button" class="btn btn-success">Buy Now</button>
+        <button type="button" class="btn btn-primary">Add to Card</button>
+    </div>
+</div>
