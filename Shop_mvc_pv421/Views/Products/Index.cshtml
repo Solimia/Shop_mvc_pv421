@@ -57,7 +57,7 @@
                 <td>
                     
                     <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@i.Id">Edit</a>
-                    <a  data-bs-id="@i.Id" data-bs-title="@i.Title"  data-bs-toggle="modal" data-bs-target="#deleteConfirmDialog" class="btn btn-outline-danger">Delete</a>
+                    <a data-bs-id=@i.Id data-bs-toggle="modal" data-bs-target="#deleteConfirm" class="btn btn-outline-danger">Delete</a>
 
             </tr>
 		}
@@ -70,44 +70,28 @@
     </div>
 }
 
-
-<div class="modal fade" id="deleteConfirmDialog" tabindex="-1" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Do you want to delete <b class="title"></b> product? </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <a id="deleteBtn"  class="btn btn-danger">Yes</a>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="_ConfirmModalDialogPartial"
+		 model=@(new ConfirmDialogModel() 
+         {
+             DialogId = "deleteConfirm",
+             Message = "Do you want to delete the product ?",
+             Title = "Delete Confirmatoin"
+         } )/>
 
 @section Scripts {
-    <script>        
-        var modal = document.getElementById('deleteConfirmDialog')
-		var deleteBtn = document.getElementById('deleteBtn')
+    <script>
 
-        modal.addEventListener('show.bs.modal', function (event) {
+           var modal = document.getElementById('1')
+           var deleteBtn = model.querySelector('.actionBtn')
 
-        var button = event.relatedTarget
+           modal.addEventListener('show.bs.modal', function (event) {
 
-		var title = button.getAttribute('data-bs-title')
+           var button = event.relatedTarget
+           // ----id
+           var url = button.getAttribute('data-bs-confirm-id')
+           // var deleteBtn = modal.querySelector('.modal #deleteBtn')
+           deleteBtn.setAttribute('href', '/product/delete/' + id)
+        })
 
-        // Update the models
-		var titleSpan = modal.querySelector('.modal-body .title')
-        titleSpan.textContent = title
-
-        // ----id
-		var id = button.getAttribute('data-bs-id')
-        var deleteBtn = modal.querySelector('.modal #deleteBtn')
-		deleteBtn.setAttribute('href', '/products/delete/' + id)
-     })
     </script>
 }
