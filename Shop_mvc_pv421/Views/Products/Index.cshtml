@@ -70,8 +70,7 @@
     </div>
 }
 
-<partial name="_ConfirmModalDialogPartial"
-		 model=@(new ConfirmDialogModel() 
+<partial name="_ConfirmModalDialogPartial" model=@(new ConfirmDialogModel() 
          {
              DialogId = "deleteConfirm",
              Message = "Do you want to delete the product ?",
@@ -81,17 +80,19 @@
 @section Scripts {
     <script>
 
-           var modal = document.getElementById('1')
-           var deleteBtn = model.querySelector('.actionBtn')
+           var modal = document.getElementById('deleteConfirm')
+           var deleteBtn = modal.querySelector('.actionBtn')
 
            modal.addEventListener('show.bs.modal', function (event) {
 
            var button = event.relatedTarget
            // ----id
-           var url = button.getAttribute('data-bs-confirm-id')
-           // var deleteBtn = modal.querySelector('.modal #deleteBtn')
-           deleteBtn.setAttribute('href', '/product/delete/' + id)
+           var id = button.getAttribute('data-bs-id')
+           
+           deleteBtn.setAttribute('href', '/products/delete/' + id)
         })
+
+        
 
     </script>
 }

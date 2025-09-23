@@ -67,7 +67,7 @@ namespace Shop_mvc_pv421.Controllers
         public IActionResult Delete(int id)
         {
             var product = ctx.Products.Find(id);
-            if(product == null) return NotFound();
+            if (product == null) return NotFound();
             
             ctx.Products.Remove(product);
             ctx.SaveChanges();
