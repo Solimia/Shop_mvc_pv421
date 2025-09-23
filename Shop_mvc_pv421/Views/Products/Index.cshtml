@@ -1,6 +1,11 @@
 ﻿
 @model List<Product>
 
+@{
+    string delDialogId = "deleteConfirms";
+    string editDialogId = "edit";
+}
+
 <h1>Product List</h1>
 
 
@@ -55,9 +60,9 @@
                     }
                 
                 <td>
-                    
-                    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@i.Id">Edit</a>
-                    <a data-bs-id=@i.Id data-bs-toggle="modal" data-bs-target="#deleteConfirm" class="btn btn-outline-danger">Delete</a>
+
+                    <a data-bs-id=@i.Id data-bs-toggle="modal" data-bs-target="#@editDialogId" class="btn btn-outline-warning">Edit</a>
+                    <a data-bs-id=@i.Id data-bs-toggle="modal" data-bs-target="#@delDialogId" class="btn btn-outline-danger">Delete</a>
 
             </tr>
 		}
@@ -72,27 +77,23 @@
 
 <partial name="_ConfirmModalDialogPartial" model=@(new ConfirmDialogModel() 
          {
-             DialogId = "deleteConfirm",
+             DialogId = delDialogId,
+			 Mode = DialogType.danger,
              Message = "Do you want to delete the product ?",
              Title = "Delete Confirmatoin"
          } )/>
 
+<partial name="_ConfirmModalDialogPartial"model=@(new ConfirmDialogModel()
+         {
+              DialogId = editDialogId,
+              Mode = DialogType.warning,
+              Message = "Do you want to edit the product ?",
+              Title = "Edit Confirmatoin"
+          } ) />
+
 @section Scripts {
     <script>
-
-           var modal = document.getElementById('deleteConfirm')
-           var deleteBtn = modal.querySelector('.actionBtn')
-
-           modal.addEventListener('show.bs.modal', function (event) {
-
-           var button = event.relatedTarget
-           // ----id
-           var id = button.getAttribute('data-bs-id')
-           
-           deleteBtn.setAttribute('href', '/products/delete/' + id)
-        })
-
-        
-
+        configConfirmModal('@delDialogId', '/products/delete/');
+        configConfirmModal('@editDialogId', '/products/edit/');
     </script>
 }
