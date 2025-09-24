@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop_mvc_pv421.Data;
 using Shop_mvc_pv421.Data.Entities;
+using Shop_mvc_pv421.Extensions;
+using Shop_mvc_pv421.Models;
 
 
 namespace Shop_mvc_pv421.Controllers
@@ -37,8 +39,14 @@ namespace Shop_mvc_pv421.Controllers
             {
                 return View();
             }
+
             ctx.Products.Add(product);
             ctx.SaveChanges();
+
+            //TempData[WebConstants.ToastMessage] = new ToastModel("Product created successfully!");
+            //ViewBag.ToastMessage = "Product created succerst";
+
+            TempData.Set(WebConstants.ToastMessage, new ToastModel("Product created successfully!"));
 
             return RedirectToAction("Index");
         }
@@ -62,6 +70,7 @@ namespace Shop_mvc_pv421.Controllers
             ctx.Products.Update(product);
             ctx.SaveChanges();
 
+            TempData.Set(WebConstants.ToastMessage, new ToastModel("Product update successfully!"));
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)
@@ -71,6 +80,8 @@ namespace Shop_mvc_pv421.Controllers
             
             ctx.Products.Remove(product);
             ctx.SaveChanges();
+
+            TempData.Set(WebConstants.ToastMessage, new ToastModel("Product delete successfully!", ToastType.danger));
 
             return RedirectToAction("Index") ;
         }
