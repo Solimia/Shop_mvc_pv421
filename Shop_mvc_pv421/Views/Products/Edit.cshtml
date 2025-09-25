@@ -26,8 +26,11 @@
         <span asp-validation-for="Quantity" class="small text-danger"> </span>
     </div>
     <div class="col-md-8">
-        <label asp-for="CategoryId" class="form-label">Category Id </label>
-        <input asp-for="CategoryId" type="number" class="form-control" placeholder="Enter product category">
+        <label asp-for="CategoryId" class="form-label">Category Id</label>
+        @* <input asp-for="CategoryId" type="number" class="form-control" placeholder="Enter product cate *@
+        <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-select">
+            <option disabled selected>Choose category...</option>
+        </select>
         <span asp-validation-for="CategoryId" class="small text-danger"> </span>
     </div>
     <div class="col-md-12">

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Shop_mvc_pv421.Data;
 using Shop_mvc_pv421.Data.Entities;
@@ -28,6 +29,7 @@ namespace Shop_mvc_pv421.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            SetCategoriesToViewBag();
 
             return View();
         }
@@ -37,6 +39,7 @@ namespace Shop_mvc_pv421.Controllers
         {
             if (!ModelState.IsValid)
             {
+                SetCategoriesToViewBag();
                 return View();
             }
 
@@ -57,6 +60,8 @@ namespace Shop_mvc_pv421.Controllers
             var product = ctx.Products.Find(id);
             if (product == null) return NotFound();
 
+            SetCategoriesToViewBag();
+
             return View(product);
         }
 
@@ -65,6 +70,7 @@ namespace Shop_mvc_pv421.Controllers
         {
             if (!ModelState.IsValid)
             {
+                SetCategoriesToViewBag();
                 return View();
             }
             ctx.Products.Update(product);
@@ -84,6 +90,13 @@ namespace Shop_mvc_pv421.Controllers
             TempData.Set(WebConstants.ToastMessage, new ToastModel("Product delete successfully!", ToastType.danger));
 
             return RedirectToAction("Index") ;
+        }
+
+        private void SetCategoriesToViewBag()
+        {
+            var categories = new SelectList(ctx.Categories.ToList(), "Id", "Name");
+
+            ViewBag.Categories = categories;
         }
     }
 }
