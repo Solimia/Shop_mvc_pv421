@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Shop_mvc_pv421.Extensions
 {
-    public static class TempDataExtensions
+    public static class SessionExtensions
     {
         public static void Set<T>(this ITempDataDictionary tempData, string key, T value) where T : class
         {
@@ -19,4 +19,7 @@ namespace Shop_mvc_pv421.Extensions
 
         }
     }
+
+
+
 }
