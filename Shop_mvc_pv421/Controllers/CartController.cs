@@ -1,27 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop_mvc_pv421.Extensions;
 
 namespace Shop_mvc_pv421.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Index()
+        //get 
+        public ActionResult Index()
         {
-            return View();
+            var existingIds = HttpContext.Session.Get<List<int>>("CartItem") ?? new List<int>();
+
+            return View(existingIds);
         }
 
-        public IActionResult Add (int id)
+        public ActionResult Add (int id)
         {
+            var existingIds = HttpContext.Session.Get<List<int>>("CartItems");
 
-            List<int> ids = new List<int>();
+            List<int> ids = existingIds ?? new();
 
             ids.Add(id);
 
-            HttpContext.Session.SetString("UserCart", id.ToString());
+            HttpContext.Session.Set("CartItems", ids);
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Remove()
+        public ActionResult Remove()
         {
             return View();
         }

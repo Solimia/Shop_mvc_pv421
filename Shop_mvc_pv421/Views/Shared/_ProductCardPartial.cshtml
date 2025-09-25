@@ -8,6 +8,6 @@
     </div>
     <div class="card-footer">
         <button type="button" class="btn btn-success">Buy Now</button>
-        <button type="button" class="btn btn-primary">Add to Card</button>
+        <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">Add to Card</a>
     </div>
 </div>
