@@ -1,6 +1,6 @@
 using System.Data;
+using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
-using Shop_mvc_pv421.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

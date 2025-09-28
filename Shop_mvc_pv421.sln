@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_mvc_pv421", "Shop_mvc_pv421\Shop_mvc_pv421.csproj", "{C7DE2A10-7531-450C-AA19-8B12609AE401}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{8AC9A5CA-674F-4049-8401-E105BD84261C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C7DE2A10-7531-450C-AA19-8B12609AE401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7DE2A10-7531-450C-AA19-8B12609AE401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7DE2A10-7531-450C-AA19-8B12609AE401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC9A5CA-674F-4049-8401-E105BD84261C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC9A5CA-674F-4049-8401-E105BD84261C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC9A5CA-674F-4049-8401-E105BD84261C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC9A5CA-674F-4049-8401-E105BD84261C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

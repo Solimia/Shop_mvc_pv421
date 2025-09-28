@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
+﻿using DataAccess.Data;
+using DataAccess.Data.Entities;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Shop_mvc_pv421.Data;
-using Shop_mvc_pv421.Data.Entities;
 using Shop_mvc_pv421.Extensions;
 using Shop_mvc_pv421.Models;
 
